@@ -1,0 +1,43 @@
+<!--
+ Copyright (c) 2014, 2022, Oracle and/or its affiliates.
+ Licensed under The Universal Permissive License (UPL), Version 1.0
+ as shown at https://oss.oracle.com/licenses/upl/
+ -->
+<div class="oj-hybrid-padding">
+  <h1>Dashboard Content Area</h1>
+  <div>
+      To change the content of this section, you will make edits to the dashboard.html file located in the /js/views folder.
+  </div>
+</div>
+<div id="componentDemoContent" style="width: 1px; min-width: 100%;">
+                  
+  <div id="routing-container">
+    <oj-tab-bar edge="top" data="[[dataProvider]]" selection="{{selection.path}}">
+      <template slot="itemTemplate" data-oj-as="item">
+        <oj-bind-if test="[[item.data.detail]]">
+          <li :id="[[item.data.path]]">
+            <a href="#">
+              <oj-bind-text value="[[item.data.detail.label]]"></oj-bind-text>
+            </a>
+          </li>
+        </oj-bind-if>
+      </template>
+    </oj-tab-bar>
+    <hr />
+    <div id="pageContent" class="oj-panel oj-bg-info-30" tabindex="0">
+      <h3>
+        <b>Router path:</b>
+        <oj-bind-text value="[[selection.path]]"></oj-bind-text>
+      </h3>
+      <h3>
+        <b>Path label:</b>
+        <oj-bind-if test="[[selection.state]]">
+          <oj-bind-text value="[[selection.state().detail.label]]"></oj-bind-text>
+        </oj-bind-if>
+      </h3>
+    </div>
+  </div>
+  
+  
+  
+</div>

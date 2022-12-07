@@ -1,0 +1,80 @@
+<!--
+ Copyright (c) 2014, 2022, Oracle and/or its affiliates.
+ Licensed under The Universal Permissive License (UPL), Version 1.0
+ as shown at https://oss.oracle.com/licenses/upl/
+ -->
+<div class="oj-hybrid-padding">
+  <h1>Montor Cases</h1>
+  <div>
+    This Page contains Patient Case Details.
+  </div>
+  <!-- form div  -->
+  <div id="dialogWrapper">
+    <oj-dialog id="modelessDialog1" dialog-title="Enter Cases " modality="modeless" aria-describedby="desc">
+      <div slot="body">
+        <p id="desc">
+        <div id="form-container">
+          <div>
+            <oj-label-value label-edge="inside">
+              <oj-label slot="label" label-id="grouplabel1">Patient's Name</oj-label>
+              <oj-input-text label-edge="inside" slot="value" aria-label="input text" value=""
+                class="demo-form-control-max-width oj-sm-padding-1x-end"></oj-input-text>
+            </oj-label-value>
+          </div>
+          <hr />
+          <div>
+            <oj-label-value label-edge="inside">
+              <oj-label slot="label" label-id="grouplabel1">Patient's Name</oj-label>
+              <oj-input-text slot="value" aria-label="input text" value="text"
+                class="demo-form-control-max-width oj-sm-padding-1x-end"></oj-input-text>
+            </oj-label-value>
+          </div>
+          <hr />
+          <div>
+            <oj-label-value label-edge="top">
+              <oj-combobox-many
+                slot="value"
+                aria-label="combobox multiple"
+                value='["Chrome"]'
+                class="demo-form-control-max-width oj-sm-padding-1x-end">
+                <oj-option value="Internet Explorer">Internet Explorer</oj-option>
+                <oj-option value="Firefox">Firefox</oj-option>
+                <oj-option value="Chrome">Chrome</oj-option>
+                <oj-option value="Opera">Opera</oj-option>
+                <oj-option value="Safari">Safari</oj-option>
+              </oj-combobox-many>
+              <oj-button slot="value" chroming="outlined">
+                <span slot="startIcon" class="oj-ux-ico"></span>
+                button
+              </oj-button>
+            </oj-label-value>
+          </div>
+
+
+        </div>
+        </p>
+      </div>
+      <div slot="footer">
+        <oj-button id="okButton" on-oj-action="[[handleOKClose]]">OK</oj-button>
+      </div>
+    </oj-dialog>
+    <div id="action">
+      <oj-button id="buttonOpener" on-oj-action="[[handleOpen]]">Add</oj-button>
+      <oj-button id="chroming_button5" chroming="danger">Delete</oj-button>
+    </div>
+
+    <oj-input-text id="filter" class="oj-form-control-max-width-md" label-hint="Filter" label-edge="inside"
+      placeholder="Type to filter" on-raw-value-changed="[[handleValueChanged]]" value="{{filter}}" clear-icon="always">
+    </oj-input-text>
+
+    <oj-table id="table" aria-label="Departments Table" accessibility.row-header="depName" data="[[dataprovider]]"
+      scroll-policy="loadMoreOnScroll" columns="{{columnArray}}" class="demo-table-container">
+
+    </oj-table>
+  </div>
+
+
+
+
+
+</div>

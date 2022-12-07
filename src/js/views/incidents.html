@@ -1,0 +1,76 @@
+<!--
+ Copyright (c) 2014, 2022, Oracle and/or its affiliates.
+ Licensed under The Universal Permissive License (UPL), Version 1.0
+ as shown at https://oss.oracle.com/licenses/upl/
+ -->
+<div class="oj-hybrid-padding">
+  <h1>Precaution Guide </h1>
+  <div>
+    To change the content of this section, you will make edits to the incidents.html file located in the /js/views
+    folder.
+  </div>
+  <!--Symptoms Based Search Mechanisim-->
+  <div class="oj-flex oj-sm-flex-direction-column">
+    <div class="oj-flex-item oj-sm-margin-4x-vertical">
+      <oj-combobox-many
+        id="combobox1"
+        class="oj-form-control-max-width-md"
+        label-hint="Search Symptoms"
+        label-edge="inside"
+        value="{{value1}}">
+        <oj-bind-for-each data="[[browsers]]">
+          <template>
+            <oj-option value="[[$current.data.value]]">
+              <oj-bind-text value="[[$current.data.label]]"></oj-bind-text>
+            </oj-option>
+          </template>
+        </oj-bind-for-each>
+      </oj-combobox-many>
+      <oj-button slot="value" chroming="outlined" style="height:61px">
+        <span slot="startIcon" class="oj-ux-ico-search"></span>
+        Search
+      </oj-button>
+      <oj-button slot="value" chroming="outlined" style="height:61px">
+        <span slot="startIcon"></span>
+        Add
+      </oj-button>
+      <oj-button slot="value" chroming="outlined" style="height:61px">
+        <span slot="startIcon"></span>
+        Remove
+      </oj-button>
+    </div>
+  </div>
+
+  <!--Collapsible and Scrollable Guide Articles-->
+  <div>
+
+    <oj-list-view id="listview" aria-label="list with static data" data="[[dataProvider]]"
+    scroll-policy-options.fetch-size="3"
+    scroll-to-key="{{scrollToKey}}"
+              scroll-position="{{scrollPos}}"
+              selection-mode="single"
+              on-scroll-position-changed="[[handleScrollPositionChanged]]"
+              scroll-policy="loadMoreOnScroll"
+              
+    class="demo-list oj-sm-padding-1x-horizontal oj-listview-item-padding-off">
+      <template slot="itemTemplate" data-oj-as="item">
+        <oj-list-item-layout>
+          <div>
+          <oj-collapsible id="c1">
+            <h3 id="h" slot="header">
+              <oj-bind-text value="[[item.data.name]]"></oj-bind-text>
+            </h3>
+            <p>
+              <oj-bind-text value="[[item.data.symptoms]]"></oj-bind-text>
+            </p>
+            <p>
+              <oj-bind-text value="[[item.data.guide]]"></oj-bind-text>
+            </p>
+          </oj-collapsible>
+        </div>
+        </oj-list-item-layout>
+      </template>
+    </oj-list-view>
+
+  </div>
+</div>
